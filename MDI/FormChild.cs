@@ -51,7 +51,7 @@ namespace MDI
         {
             if (_drawImage)
             {
-                _image.Save(path, ImageFormat.Png);
+                _image.Save(path, ImageFormat.Jpeg);
             }
             else
             {
