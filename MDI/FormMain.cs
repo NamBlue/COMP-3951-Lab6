@@ -20,6 +20,7 @@ namespace MDI
     /// </summary>
     public partial class FormMain : Form
     {
+        Form activeChild;
         /// <summary>
         /// Constructor for the main form.  It initializes the GUI and the window with it's tool
         /// menu to the user.  
@@ -27,6 +28,12 @@ namespace MDI
         public FormMain()
         {
             InitializeComponent();
+            if (activeChild == null)
+            {
+                saveToolStripMenuItem.Enabled = false;
+                saveAsToolStripMenuItem.Enabled = false;
+            }
+            
         }
 
         #region Button Methods
@@ -96,7 +103,7 @@ namespace MDI
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form activeChild = this.ActiveMdiChild;
+            activeChild = this.ActiveMdiChild;
             if (activeChild != null)
             {
                 try
