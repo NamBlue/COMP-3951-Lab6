@@ -48,7 +48,18 @@ namespace MDI
 
         private void openFromFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Configure open file dialog box
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.InitialDirectory = "./";
+            dialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*"; // Filter files by extension
+            dialog.FilterIndex = 1;
 
+            // Show open file dialog box
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                // Process open file dialog box results
+
+            }
         }
 
         private void openFromWebToolStripMenuItem_Click(object sender, EventArgs e)
