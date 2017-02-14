@@ -12,9 +12,37 @@ namespace MDI
 {
     public partial class DialogueImage : Form
     {
+        public RadioButton checkedRadioButton { get; set; }
+
         public DialogueImage()
         {
             InitializeComponent();
+            if(checkedRadioButton == null)
+            {
+                checkedRadioButton = Option1;
+            }
         }
+
+
+        #region Button Methods
+
+        private void OKButton_Clicked(object sender, EventArgs e)
+        {
+            var checkedButton = RadioGroup.Controls.OfType<RadioButton>()
+                                      .FirstOrDefault(r => r.Checked);
+            if (checkedButton!= null)
+            {
+                checkedRadioButton = checkedButton;
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+        }
+
+        private void CancelButton_Clicked(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        #endregion
     }
 }
