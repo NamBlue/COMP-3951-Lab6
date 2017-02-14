@@ -18,15 +18,16 @@ namespace MDI
         private Image _image;
         private Graphics _graphics;
         public bool Saved { get; set; } = false;
+        public String Path { get; set; }
         
 
         public FormChild()
         {
             InitializeComponent();
-            _width = 640;
-            _height = 480;
-            Width = 656;
-            Height = 520;
+            this._width = 640;
+            this._height = 480;
+            this.Width = 656;
+            this.Height = 520;
         }
 
         public FormChild(int width, int height)
@@ -34,17 +35,25 @@ namespace MDI
             InitializeComponent();
             this._width = width;
             this._height = height;
-            Width = width + 16;
-            Height = height + 40;
+            this.Width = width + 16;
+            this.Height = height + 40;
         }
 
-        public FormChild(Image image)
+        public FormChild(String path)
         {
             InitializeComponent();
-            Width = image.Width + 16;
-            Height = image.Height + 40;
-            _drawImage = true;
-            _image = image;
+            try
+            {
+                Image image = Image.FromFile(path);
+                this.Width = image.Width + 16;
+                this.Height = image.Height + 40;
+                this._drawImage = true;
+                this._image = image;
+                this.Path = path;
+            } catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex);
+            }   
         }
 
         public void SaveImage(String path)
@@ -60,6 +69,8 @@ namespace MDI
                 graphics.FillRectangle(Brushes.Blue, 0, 0, _width, _height);             
                 b1.Save(path);
             }
+            Saved = true;
+            this.Path = path;
         } 
 
         protected override void OnPaint(PaintEventArgs e)

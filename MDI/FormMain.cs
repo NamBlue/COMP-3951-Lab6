@@ -59,13 +59,9 @@ namespace MDI
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 // Process open file dialog box results
-                Image image = Image.FromFile(dialog.FileName);
-                if (image != null)
-                {
-                    FormChild formChild = new FormChild(image);
-                    formChild.MdiParent = this;
-                    formChild.Show();
-                }                
+                FormChild formChild = new FormChild(dialog.FileName);
+                formChild.MdiParent = this;
+                formChild.Show();              
             }
         }
 
@@ -76,7 +72,26 @@ namespace MDI
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Form activeChild = this.ActiveMdiChild;
+            if (activeChild != null)
+            {
+                try
+                {
+                    FormChild child = (FormChild)activeChild;
+                    if (child.Saved)
+                    { 
+                        ((FormChild)activeChild).SaveImage(((FormChild)activeChild).Path);
+                    }
+                    else
+                    {
+                        saveAsToolStripMenuItem_Click(null, null);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex);
+                }
+            }
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
