@@ -46,6 +46,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DialogueImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogueImage.Designer.cs">
+      <DependentUpon>DialogueImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMainDialogueClose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMainDialogueClose.Designer.cs">
+      <DependentUpon>FormMainDialogueClose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChildDialogueClose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChildDialogueClose.Designer.cs">
+      <DependentUpon>FormChildDialogueClose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDialogueWeb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDialogueWeb.Designer.cs">
+      <DependentUpon>FormDialogueWeb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChild.Designer.cs">
+      <DependentUpon>FormChild.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +84,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DialogueImage.resx">
+      <DependentUpon>DialogueImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMainDialogueClose.resx">
+      <DependentUpon>FormMainDialogueClose.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChildDialogueClose.resx">
+      <DependentUpon>FormChildDialogueClose.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDialogueWeb.resx">
+      <DependentUpon>FormDialogueWeb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChild.resx">
+      <DependentUpon>FormChild.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
