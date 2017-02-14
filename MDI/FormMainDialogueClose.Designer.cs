@@ -28,19 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.components = new System.ComponentModel.Container();
             this.SaveButton = new System.Windows.Forms.Button();
             this.NoSaveButton = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.LabelClose = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Menu;
-            this.textBox1.Location = new System.Drawing.Point(169, 110);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(358, 31);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "Do you want to save before closing?";
             // 
             // SaveButton
             // 
@@ -62,14 +55,29 @@
             this.NoSaveButton.UseVisualStyleBackColor = true;
             this.NoSaveButton.Click += new System.EventHandler(this.NoSaveButton_Clicked);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(86, 4);
+            // 
+            // LabelClose
+            // 
+            this.LabelClose.AutoSize = true;
+            this.LabelClose.Location = new System.Drawing.Point(171, 128);
+            this.LabelClose.Name = "LabelClose";
+            this.LabelClose.Size = new System.Drawing.Size(360, 25);
+            this.LabelClose.TabIndex = 4;
+            this.LabelClose.Text = "Do you want to save before closing?";
+            // 
             // FormMainDialogueClose
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 541);
+            this.Controls.Add(this.LabelClose);
             this.Controls.Add(this.NoSaveButton);
             this.Controls.Add(this.SaveButton);
-            this.Controls.Add(this.textBox1);
             this.Name = "FormMainDialogueClose";
             this.Text = "FormMainDialogueClose";
             this.ResumeLayout(false);
@@ -78,9 +86,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button NoSaveButton;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Label LabelClose;
     }
 }

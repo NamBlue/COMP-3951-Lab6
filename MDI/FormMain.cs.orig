@@ -82,40 +82,24 @@ namespace MDI
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 // Process open file dialog box results
-                FormChild formChild = new FormChild(dialog.FileName);
-                formChild.MdiParent = this;
-                formChild.Show();              
+                Image image = Image.FromFile(dialog.FileName);
+                if (image != null)
+                {
+                    FormChild formChild = new FormChild(image);
+                    formChild.MdiParent = this;
+                    formChild.Show();
+                }                
             }
         }
 
         private void openFromWebToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormDialogueWeb dialog = new FormDialogueWeb();
 
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form activeChild = this.ActiveMdiChild;
-            if (activeChild != null)
-            {
-                try
-                {
-                    FormChild child = (FormChild)activeChild;
-                    if (child.Saved)
-                    { 
-                        ((FormChild)activeChild).SaveImage(((FormChild)activeChild).Path);
-                    }
-                    else
-                    {
-                        saveAsToolStripMenuItem_Click(null, null);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine(ex);
-                }
-            }
+
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -125,6 +109,7 @@ namespace MDI
             dialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*"; // Filter files by extension
             dialog.FilterIndex = 1;
 
+<<<<<<< Updated upstream
             // Show open file dialog box
             if (dialog.ShowDialog() == DialogResult.OK)
             {
@@ -144,6 +129,8 @@ namespace MDI
                     }
                 }
             }
+=======
+>>>>>>> Stashed changes
         }
         /// <summary>
         /// Method for exiting the program.  It will also ask the user if they wish to save any 
@@ -162,7 +149,7 @@ namespace MDI
                         FormMainDialogueClose formMainDialogueClose = new FormMainDialogueClose();
                         if (formMainDialogueClose.ShowDialog() == DialogResult.OK)
                         {
-                            saveAsToolStripMenuItem_Click(sender, e);
+
                         }
                     }
                 }

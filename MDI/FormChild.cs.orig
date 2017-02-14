@@ -59,17 +59,26 @@ namespace MDI
             InitializeComponent();
             this._width = width;
             this._height = height;
+<<<<<<< Updated upstream
             this.Width = width + 16;
             this.Height = height + 40;
-        }        
+        }
 
         public FormChild(String path)
+=======
+            Width = width + 16;
+            Height = height + 40;
+        }        
+
+        /// <summary>       
         /// Constructor for the child window with a specified image that fits inside the
         /// specified height and width for the window.  
         /// </summary>
         /// <param name="width"></param>
         /// <param name="height"></param>
         /// <param name="image"></param>
+	    public FormChild(Image image)
+>>>>>>> Stashed changes
         {
             InitializeComponent();
             try

@@ -20,12 +20,13 @@ namespace MDI
 
         private void SaveButton_Clicked(object sender, EventArgs e)
         {
-
+            DialogResult = DialogResult.OK;
             Close();
         }
 
         private void NoSaveButton_Clicked(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Cancel;
             Close();
         }
     }
