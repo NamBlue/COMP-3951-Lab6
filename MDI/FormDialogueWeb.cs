@@ -12,9 +12,21 @@ namespace MDI
 {
     public partial class FormDialogueWeb : Form
     {
+        public String Path { get; set; }
         public FormDialogueWeb()
         {
             InitializeComponent();
+        }
+
+        private void okButton_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
         }
     }
 }
