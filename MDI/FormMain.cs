@@ -27,19 +27,19 @@ namespace MDI
             {
                 if (dialogueImage.checkedRadioButton.Text == "640 x 480")
                 {
-                    FormChild formChild = new FormChild();
+                    FormChild formChild = new FormChild(640, 480);
                     formChild.MdiParent = this;
                     formChild.Show();
                 }
                 if (dialogueImage.checkedRadioButton.Text == "800 x 600")
                 {
-                    FormChild formChild = new FormChild();
+                    FormChild formChild = new FormChild(800, 600);
                     formChild.MdiParent = this;
                     formChild.Show();
                 }
                 if (dialogueImage.checkedRadioButton.Text == "1024 x 768")
                 {
-                    FormChild formChild = new FormChild();
+                    FormChild formChild = new FormChild(1024, 768);
                     formChild.MdiParent = this;
                     formChild.Show();
                 }
@@ -79,20 +79,36 @@ namespace MDI
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            FormMainDialogueClose formMainDialogueClose = new FormMainDialogueClose();
+            if (formMainDialogueClose.ShowDialog() == DialogResult.OK)
+            {
 
-            Close();
+                Close();
+            }
         }
-
+        /// <summary>
+        /// Method for arranging the child windows in a cascading fashion.  
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cascadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.LayoutMdi(System.Windows.Forms.MdiLayout.Cascade);
         }
-
+        /// <summary>
+        /// Method for arranging the child windows vertically.  
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tileVerticalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.LayoutMdi(System.Windows.Forms.MdiLayout.TileVertical);
         }
-
+        /// <summary>
+        /// Method for arranging the child window horizontally.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tileHorizontalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.LayoutMdi(System.Windows.Forms.MdiLayout.TileHorizontal);

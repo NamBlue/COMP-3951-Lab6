@@ -12,9 +12,21 @@ namespace MDI
 {
     public partial class FormMainDialogueClose : Form
     {
+        public Button Save { get; set; }
         public FormMainDialogueClose()
         {
             InitializeComponent();
+        }
+
+        private void SaveButton_Clicked(object sender, EventArgs e)
+        {
+
+            Close();
+        }
+
+        private void NoSaveButton_Clicked(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
