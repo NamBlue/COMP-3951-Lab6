@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -80,7 +81,30 @@ namespace MDI
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.InitialDirectory = "./";
+            dialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*"; // Filter files by extension
+            dialog.FilterIndex = 1;
 
+            // Show open file dialog box
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                // Determine the active child form.  
+                Form activeChild = this.ActiveMdiChild;
+
+                // If there is an active child form
+                if (activeChild != null)
+                {
+                    try
+                    {
+                        ((FormChild)activeChild).SaveImage(dialog.FileName);
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine(ex);
+                    }
+                }
+            }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

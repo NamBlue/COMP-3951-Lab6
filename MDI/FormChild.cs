@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace MDI
         private int _width, _height;
         private bool _drawImage = false;
         private Image _image;
+        private Graphics _graphics;
         public bool Saved { get; set; } = false;
         
 
@@ -45,17 +47,32 @@ namespace MDI
             _image = image;
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        public void SaveImage(String path)
         {
-            base.OnPaint(e);
-            Graphics graphics = e.Graphics;
             if (_drawImage)
             {
-                graphics.DrawImage(_image, 0, 0, _image.Width, _image.Height);
+                _image.Save(path, ImageFormat.Png);
             }
             else
             {
-                graphics.FillRectangle(Brushes.Blue, 0, 0, _width, _height);
+                Bitmap b1 = new Bitmap(Width, Height);
+                Graphics graphics = Graphics.FromImage(b1);
+                graphics.FillRectangle(Brushes.Blue, 0, 0, _width, _height);             
+                b1.Save(path);
+            }
+        } 
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            _graphics = e.Graphics;
+            if (_drawImage)
+            {
+                _graphics.DrawImage(_image, 0, 0, _image.Width, _image.Height);
+            }
+            else
+            {
+                _graphics.FillRectangle(Brushes.Blue, 0, 0, _width, _height);
             }
         }
     }
