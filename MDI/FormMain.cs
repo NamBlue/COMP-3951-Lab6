@@ -58,7 +58,13 @@ namespace MDI
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 // Process open file dialog box results
-
+                Image image = Image.FromFile(dialog.FileName);
+                if (image != null)
+                {
+                    FormChild formChild = new FormChild(image);
+                    formChild.MdiParent = this;
+                    formChild.Show();
+                }                
             }
         }
 

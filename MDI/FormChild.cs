@@ -36,13 +36,11 @@ namespace MDI
             Height = height + 40;
         }
 
-        public FormChild(int width, int height, Image image)
+        public FormChild(Image image)
         {
             InitializeComponent();
-            this._width = width;
-            this._height = height;
-            Width = width + 16;
-            Height = height + 40;
+            Width = image.Width + 16;
+            Height = image.Height + 40;
             _drawImage = true;
             _image = image;
         }
@@ -53,7 +51,7 @@ namespace MDI
             Graphics graphics = e.Graphics;
             if (_drawImage)
             {
-                graphics.DrawImage(_image, 0, 0);
+                graphics.DrawImage(_image, 0, 0, _image.Width, _image.Height);
             }
             else
             {
