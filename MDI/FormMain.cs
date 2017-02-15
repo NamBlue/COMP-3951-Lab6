@@ -79,7 +79,7 @@ namespace MDI
             // Configure open file dialog box
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.InitialDirectory = "./";
-            dialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*"; // Filter files by extension
+            dialog.Filter = "Bitmap (*.BMP)|*.BMP;|Jpeg (*.JPG)|*.JPG;|Graphics Interchange Format (*.GIF)|*.GIF;"; // Filter files by extension
             dialog.FilterIndex = 1;
 
             // Show open file dialog box
@@ -131,7 +131,7 @@ namespace MDI
         {
             SaveFileDialog dialog = new SaveFileDialog();
             dialog.InitialDirectory = "./";
-            dialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*"; // Filter files by extension
+            dialog.Filter = "Bitmap (*.BMP)|*.BMP;|Jpeg (*.JPG)|*.JPG;|Graphics Interchange Format (*.GIF)|*.GIF;"; // Filter files by extension
             dialog.FilterIndex = 1;
 
             // Show open file dialog box
