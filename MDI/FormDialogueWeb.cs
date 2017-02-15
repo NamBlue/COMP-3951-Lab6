@@ -15,6 +15,8 @@ namespace MDI
     public partial class FormDialogueWeb : Form
     {
         public Image Image { get; set; }
+        public String Path { get; set; }
+
         public FormDialogueWeb()
         {
             InitializeComponent();
@@ -25,13 +27,14 @@ namespace MDI
             try
             {
                 DialogResult = DialogResult.OK;
+                Path = urlBox.Text;
                 WebRequest req = WebRequest.Create(urlBox.Text);
                 WebResponse response = req.GetResponse();
                 Stream stream = response.GetResponseStream();
                 Image = Image.FromStream(stream);
                 stream.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Invalid Url, Please try again.", "Error", MessageBoxButtons.OK);
                 DialogResult = DialogResult.Cancel;

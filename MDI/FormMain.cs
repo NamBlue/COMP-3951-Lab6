@@ -13,31 +13,33 @@ namespace MDI
 {
     /// <summary>
     /// Form Main is a class which displays images to the user in the form of child windows.  The
-    /// user can create new images of sizes: 640 x 480, 800 x 600 and 1024 x768 in a child window.  
+    /// user can create new images of sizes: 640 x 480, 800 x 600 and 1024 x768 in a child window.
     /// The user can also choose an image from their local computer or from the internet.  The user
     /// can also arrange the child windows displaying the images in cascading, horizontal or vertical
-    /// formats.  The user can save any new image they create on their local computer.  
+    /// formats.  The user can save any new image they create on their local computer.
     /// </summary>
     public partial class FormMain : Form
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        Form activeChild;
+        private Form activeChild;
+
         /// <summary>
         /// Constructor for the main form.  It initializes the GUI and the window with it's tool
-        /// menu to the user.  
+        /// menu to the user.
         /// </summary>
         public FormMain()
         {
-            InitializeComponent();   
+            InitializeComponent();
         }
 
         #region Button Methods
+
         /// <summary>
         /// Method for creating a new image on a window child when the menu button is clicked.  It
         /// brings up a dialogue window for selecting the size of the image created.  Default
-        /// size is 640 x 480 if no size is selected.  
+        /// size is 640 x 480 if no size is selected.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -68,8 +70,9 @@ namespace MDI
                 }
             }
         }
+
         /// <summary>
-        /// Mehthod for opening a image file to display in a child window on the main form.  
+        /// Mehthod for opening a image file to display in a child window on the main form.
         /// The image files that are supported are: BMP, JPG, GIF
         /// </summary>
         /// <param name="sender"></param>
@@ -88,7 +91,7 @@ namespace MDI
                 // Process open file dialog box results
                 FormChild formChild = new FormChild(dialog.FileName);
                 formChild.MdiParent = this;
-                formChild.Show();              
+                formChild.Show();
             }
         }
 
@@ -98,6 +101,7 @@ namespace MDI
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 FormChild formChild = new FormChild(dialog.Image);
+                formChild.Text = dialog.Path;
                 formChild.MdiParent = this;
                 formChild.Show();
             }
@@ -112,7 +116,7 @@ namespace MDI
                 {
                     FormChild child = (FormChild)activeChild;
                     if (child.Saved)
-                    { 
+                    {
                         ((FormChild)activeChild).SaveImage(((FormChild)activeChild).Path);
                     }
                     else
@@ -137,7 +141,7 @@ namespace MDI
             // Show open file dialog box
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                // Determine the active child form.  
+                // Determine the active child form.
                 Form activeChild = this.ActiveMdiChild;
 
                 // If there is an active child form
@@ -154,9 +158,10 @@ namespace MDI
                 }
             }
         }
+
         /// <summary>
-        /// Method for exiting the program.  It will also ask the user if they wish to save any 
-        /// unsaved images before exiting the program.  
+        /// Method for exiting the program.  It will also ask the user if they wish to save any
+        /// unsaved images before exiting the program.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -178,7 +183,7 @@ namespace MDI
 
                             // Show open file dialog box
                             if (dialog.ShowDialog() == DialogResult.OK)
-                            { 
+                            {
                                 form.SaveImage(dialog.FileName);
                             }
                         }
@@ -187,8 +192,9 @@ namespace MDI
             }
             Close();
         }
+
         /// <summary>
-        /// Method for arranging the child window(s) in a cascading fashion.  
+        /// Method for arranging the child window(s) in a cascading fashion.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -196,8 +202,9 @@ namespace MDI
         {
             this.LayoutMdi(System.Windows.Forms.MdiLayout.Cascade);
         }
+
         /// <summary>
-        /// Method for arranging the child window(s) vertically.  
+        /// Method for arranging the child window(s) vertically.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -205,6 +212,7 @@ namespace MDI
         {
             this.LayoutMdi(System.Windows.Forms.MdiLayout.TileVertical);
         }
+
         /// <summary>
         /// Method for arranging the child window(s) horizontally.
         /// </summary>
@@ -214,7 +222,8 @@ namespace MDI
         {
             this.LayoutMdi(System.Windows.Forms.MdiLayout.TileHorizontal);
         }
-        #endregion
+
+        #endregion Button Methods
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {

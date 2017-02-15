@@ -51,7 +51,6 @@ namespace MDI
             this._width = 640;
             this._height = 480;
             this.AutoScrollMinSize = new Size(640, 480);
-            this.DoubleBuffered = true;
         }
 
         /// <summary>
@@ -66,7 +65,6 @@ namespace MDI
             this._width = width;
             this._height = height;
             this.AutoScrollMinSize = new Size(width, height);
-            this.DoubleBuffered = true;
         }
 
         /// Constructor for the child window with a specified image that fits inside the
@@ -85,7 +83,6 @@ namespace MDI
                 this._image = image;
                 this.Path = path;
                 this.AutoScrollMinSize = image.Size;
-                this.DoubleBuffered = true;
                 this.Text = path;
             }
             catch (Exception ex)
@@ -103,7 +100,6 @@ namespace MDI
                 this._drawImage = true;
                 this._image = image;
                 this.AutoScrollMinSize = image.Size;
-                this.DoubleBuffered = true;
             }
             catch (Exception ex)
             {
