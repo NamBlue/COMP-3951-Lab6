@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,24 @@ namespace MDI
         public FormMain()
         {
             InitializeComponent();
+        }
+
+        private ImageFormat FindImageFormatByFilterIndex(int filterIndex)
+        {
+            switch (filterIndex)
+            {
+                case 1:
+                    return ImageFormat.Bmp;
+
+                case 2:
+                    return ImageFormat.Jpeg;
+
+                case 3:
+                    return ImageFormat.Gif;
+
+                default:
+                    return ImageFormat.Jpeg;
+            }
         }
 
         #region Button Methods
@@ -90,6 +109,7 @@ namespace MDI
             {
                 // Process open file dialog box results
                 FormChild formChild = new FormChild(dialog.FileName);
+                formChild.ImageFormat = FindImageFormatByFilterIndex(dialog.FilterIndex);
                 formChild.MdiParent = this;
                 formChild.Show();
             }
@@ -141,20 +161,17 @@ namespace MDI
             // Show open file dialog box
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                // Determine the active child form.
-                Form activeChild = this.ActiveMdiChild;
-
-                // If there is an active child form
-                if (activeChild != null)
+                try
                 {
-                    try
-                    {
-                        ((FormChild)activeChild).SaveImage(dialog.FileName);
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Diagnostics.Debug.WriteLine(ex);
-                    }
+                    // Determine the active child form.
+                    FormChild activeChild = (FormChild)this.ActiveMdiChild;
+
+                    activeChild.ImageFormat = FindImageFormatByFilterIndex(dialog.FilterIndex);
+                    activeChild.SaveImage(dialog.FileName);
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex);
                 }
             }
         }
@@ -184,6 +201,7 @@ namespace MDI
                             // Show open file dialog box
                             if (dialog.ShowDialog() == DialogResult.OK)
                             {
+                                form.ImageFormat = FindImageFormatByFilterIndex(dialog.FilterIndex);
                                 form.SaveImage(dialog.FileName);
                             }
                         }
@@ -223,8 +241,6 @@ namespace MDI
             this.LayoutMdi(System.Windows.Forms.MdiLayout.TileHorizontal);
         }
 
-        #endregion Button Methods
-
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             activeChild = this.ActiveMdiChild;
@@ -239,5 +255,7 @@ namespace MDI
                 saveAsToolStripMenuItem.Enabled = true;
             }
         }
+
+        #endregion Button Methods
     }
 }

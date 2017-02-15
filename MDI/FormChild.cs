@@ -41,6 +41,8 @@ namespace MDI
 
         public String Path { get; set; }
 
+        public ImageFormat ImageFormat { get; set; } = ImageFormat.Jpeg;
+
         /// <summary>
         /// Constructor for the child window with default height and width for the
         /// image size and the window size.
@@ -111,7 +113,7 @@ namespace MDI
         {
             if (_drawImage)
             {
-                _image.Save(path, ImageFormat.Jpeg);
+                _image.Save(path, ImageFormat);
             }
             else
             {
