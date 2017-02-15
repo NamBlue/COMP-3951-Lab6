@@ -111,19 +111,26 @@ namespace MDI
 
         public void SaveImage(String path)
         {
-            if (_drawImage)
+            try
             {
-                _image.Save(path, ImageFormat);
+                if (_drawImage)
+                {
+                    _image.Save(path, ImageFormat);
+                }
+                else
+                {
+                    Bitmap b1 = new Bitmap(Width, Height);
+                    Graphics graphics = Graphics.FromImage(b1);
+                    graphics.FillRectangle(Brushes.Blue, 0, 0, _width, _height);
+                    b1.Save(path);
+                }
+                Saved = true;
+                this.Path = path;
             }
-            else
+            catch (Exception ex)
             {
-                Bitmap b1 = new Bitmap(Width, Height);
-                Graphics graphics = Graphics.FromImage(b1);
-                graphics.FillRectangle(Brushes.Blue, 0, 0, _width, _height);
-                b1.Save(path);
+                System.Diagnostics.Debug.WriteLine(ex);
             }
-            Saved = true;
-            this.Path = path;
         }
 
         protected override void OnPaint(PaintEventArgs e)

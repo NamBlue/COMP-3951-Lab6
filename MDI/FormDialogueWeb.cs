@@ -36,7 +36,7 @@ namespace MDI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Invalid Url, Please try again.", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("Invalid Url or Site not found, Please try again.", "Error", MessageBoxButtons.OK);
                 DialogResult = DialogResult.Cancel;
                 System.Diagnostics.Debug.WriteLine(ex);
             }
