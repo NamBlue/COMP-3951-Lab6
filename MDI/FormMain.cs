@@ -166,7 +166,16 @@ namespace MDI
                         FormMainDialogueClose formMainDialogueClose = new FormMainDialogueClose();
                         if (formMainDialogueClose.ShowDialog() == DialogResult.OK)
                         {
-                            saveAsToolStripMenuItem_Click(sender, e);
+                            SaveFileDialog dialog = new SaveFileDialog();
+                            dialog.InitialDirectory = "./";
+                            dialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*"; // Filter files by extension
+                            dialog.FilterIndex = 1;
+
+                            // Show open file dialog box
+                            if (dialog.ShowDialog() == DialogResult.OK)
+                            { 
+                                form.SaveImage(dialog.FileName);
+                            }
                         }
                     }
                 }
