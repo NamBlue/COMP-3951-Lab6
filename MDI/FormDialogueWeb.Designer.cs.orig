@@ -74,11 +74,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 354);
+<<<<<<< Updated upstream
+            this.ClientSize = new System.Drawing.Size(874, 626);
+=======
+            this.ClientSize = new System.Drawing.Size(509, 374);
             this.Controls.Add(this.urlLabel);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.urlBox);
+>>>>>>> Stashed changes
             this.Name = "FormDialogueWeb";
             this.Text = "FormDialogueWeb";
             this.ResumeLayout(false);

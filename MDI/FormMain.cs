@@ -98,7 +98,12 @@ namespace MDI
         private void openFromWebToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormDialogueWeb dialog = new FormDialogueWeb();
-            dialog.ShowDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                FormChild formChild = new FormChild(dialog.Image);
+                formChild.MdiParent = this;
+                formChild.Show();
+            }
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
