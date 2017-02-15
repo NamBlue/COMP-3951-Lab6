@@ -33,6 +33,8 @@ namespace MDI
             }
             catch(Exception ex)
             {
+                MessageBox.Show("Invalid Url, Please try again.", "Error", MessageBoxButtons.OK);
+                DialogResult = DialogResult.Cancel;
                 System.Diagnostics.Debug.WriteLine(ex);
             }
         }
