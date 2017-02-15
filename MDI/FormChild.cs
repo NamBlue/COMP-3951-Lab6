@@ -47,6 +47,8 @@ namespace MDI
             this._height = 480;
             this.Width = 656;
             this.Height = 520;
+            this.AutoScrollMinSize = new Size(640, 480);
+            this.DoubleBuffered = true;
         }
         /// <summary>
         /// Constructor for the child window with specified height and width for the
@@ -61,15 +63,17 @@ namespace MDI
             this._height = height;
             this.Width = width + 16;
             this.Height = height + 40;
-        }        
+            this.AutoScrollMinSize = new Size(width, height);
+            this.DoubleBuffered = true;
+        }
 
-        public FormChild(String path)
         /// Constructor for the child window with a specified image that fits inside the
         /// specified height and width for the window.  
         /// </summary>
         /// <param name="width"></param>
         /// <param name="height"></param>
         /// <param name="image"></param>
+        public FormChild(String path)
         {
             InitializeComponent();
             try
@@ -80,12 +84,36 @@ namespace MDI
                 this._drawImage = true;
                 this._image = image;
                 this.Path = path;
-            } catch (Exception ex)
+                this.AutoScrollMinSize = image.Size;
+                this.DoubleBuffered = true;
+                this.Text = path;
+            }
+            catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex);
             }   
         }
-        
+
+
+        //For web images
+        public FormChild(Image image)
+        {
+            InitializeComponent();
+            try
+            {
+                this.Width = image.Width + 16;
+                this.Height = image.Height + 40;
+                this._drawImage = true;
+                this._image = image;
+                this.AutoScrollMinSize = image.Size;
+                this.DoubleBuffered = true;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex);
+            }
+        }
+
         public void SaveImage(String path)
         {
             if (_drawImage)
@@ -102,6 +130,7 @@ namespace MDI
             Saved = true;
             this.Path = path;
         } 
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);

@@ -79,7 +79,7 @@ namespace MDI
             // Configure open file dialog box
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.InitialDirectory = "./";
-            dialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*"; // Filter files by extension
+            dialog.Filter = "Bitmap (*.BMP)|*.BMP;|Jpeg (*.JPG)|*.JPG;|Graphics Interchange Format (*.GIF)|*.GIF;"; // Filter files by extension
             dialog.FilterIndex = 1;
 
             // Show open file dialog box
@@ -95,7 +95,12 @@ namespace MDI
         private void openFromWebToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormDialogueWeb dialog = new FormDialogueWeb();
-            dialog.ShowDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                FormChild formChild = new FormChild(dialog.Image);
+                formChild.MdiParent = this;
+                formChild.Show();
+            }
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -126,7 +131,7 @@ namespace MDI
         {
             SaveFileDialog dialog = new SaveFileDialog();
             dialog.InitialDirectory = "./";
-            dialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*"; // Filter files by extension
+            dialog.Filter = "Bitmap (*.BMP)|*.BMP;|Jpeg (*.JPG)|*.JPG;|Graphics Interchange Format (*.GIF)|*.GIF;"; // Filter files by extension
             dialog.FilterIndex = 1;
 
             // Show open file dialog box
