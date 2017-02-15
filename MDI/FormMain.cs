@@ -20,6 +20,9 @@ namespace MDI
     /// </summary>
     public partial class FormMain : Form
     {
+        /// <summary>
+        /// 
+        /// </summary>
         Form activeChild;
         /// <summary>
         /// Constructor for the main form.  It initializes the GUI and the window with it's tool
@@ -27,13 +30,7 @@ namespace MDI
         /// </summary>
         public FormMain()
         {
-            InitializeComponent();
-            if (activeChild == null)
-            {
-                saveToolStripMenuItem.Enabled = false;
-                saveAsToolStripMenuItem.Enabled = false;
-            }
-            
+            InitializeComponent();   
         }
 
         #region Button Methods
@@ -204,5 +201,20 @@ namespace MDI
             this.LayoutMdi(System.Windows.Forms.MdiLayout.TileHorizontal);
         }
         #endregion
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            activeChild = this.ActiveMdiChild;
+            if (activeChild == null)
+            {
+                saveToolStripMenuItem.Enabled = false;
+                saveAsToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                saveToolStripMenuItem.Enabled = true;
+                saveAsToolStripMenuItem.Enabled = true;
+            }
+        }
     }
 }
