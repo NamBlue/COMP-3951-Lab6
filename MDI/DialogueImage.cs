@@ -23,7 +23,9 @@ namespace MDI
         public RadioButton checkedRadioButton { get; set; }
 
         /// <summary>
-        /// 
+        /// Constructor for the Dialogue image window that appears to the user if they wish
+        /// to select a new image to be added to the main form.  This dialogue box gives the
+        /// user options for what size image they wish to create.  
         /// </summary>
         public DialogueImage()
         {

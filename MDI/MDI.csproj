@@ -58,12 +58,6 @@
     <Compile Include="FormMainDialogueClose.Designer.cs">
       <DependentUpon>FormMainDialogueClose.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormChildDialogueClose.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormChildDialogueClose.Designer.cs">
-      <DependentUpon>FormChildDialogueClose.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormDialogueWeb.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,9 +83,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMainDialogueClose.resx">
       <DependentUpon>FormMainDialogueClose.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormChildDialogueClose.resx">
-      <DependentUpon>FormChildDialogueClose.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDialogueWeb.resx">
       <DependentUpon>FormDialogueWeb.cs</DependentUpon>

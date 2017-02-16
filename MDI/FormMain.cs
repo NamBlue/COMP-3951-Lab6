@@ -22,7 +22,7 @@ namespace MDI
     public partial class FormMain : Form
     {
         /// <summary>
-        ///
+        /// Variable reference for tracking if a child window is on the main window form. 
         /// </summary>
         private Form activeChild;
 
@@ -34,7 +34,12 @@ namespace MDI
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Method for returning an imageformat object to a particular type of image file
+        /// type.  Supported types are: Bmp, Jpeg, Gif and Jpeg.  
+        /// </summary>
+        /// <param name="filterIndex"></param>
+        /// <returns></returns>
         private ImageFormat FindImageFormatByFilterIndex(int filterIndex)
         {
             switch (filterIndex)
@@ -114,7 +119,13 @@ namespace MDI
                 formChild.Show();
             }
         }
-
+        /// <summary>
+        /// Method for importing a image from the internet from the top menu button.  
+        /// The user is prompted with a FormDialogueWeb box which asks the user
+        /// for a URL that the image can be taken from.  
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void openFromWebToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormDialogueWeb dialog = new FormDialogueWeb();
@@ -126,7 +137,15 @@ namespace MDI
                 formChild.Show();
             }
         }
-
+        /// <summary>
+        /// Top menu button method for the save option.  It allows the user
+        /// to specify a location on their computer to save the image.  If the user has
+        /// already specified an address pathway, the saved file will overwrite the old
+        /// file instead.  This option will be unselectable if no child window forms are active
+        /// on the main form window.  
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             activeChild = this.ActiveMdiChild;
@@ -150,7 +169,13 @@ namespace MDI
                 }
             }
         }
-
+        /// <summary>
+        /// Top menu button method for saving the image with a specified name and pathway on 
+        /// the user's computer.  This method will always ask for a pathway and name.  This
+        /// will be unselectable if no child windows are currently active.  
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog dialog = new SaveFileDialog();
@@ -177,7 +202,8 @@ namespace MDI
         }
 
         /// <summary>
-        /// Method for exiting the program.  It will also ask the user if they wish to save any
+        /// Method for exiting the program if the top menu exit button is clicked.  
+        /// It will also ask the user if they wish to save any
         /// unsaved images before exiting the program.
         /// </summary>
         /// <param name="sender"></param>
@@ -212,7 +238,7 @@ namespace MDI
         }
 
         /// <summary>
-        /// Method for arranging the child window(s) in a cascading fashion.
+        /// Method for the top menu button for arranging the child window(s) in a cascading fashion.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -222,7 +248,7 @@ namespace MDI
         }
 
         /// <summary>
-        /// Method for arranging the child window(s) vertically.
+        /// Method for the top menu button for arranging the child window(s) vertically.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -232,7 +258,7 @@ namespace MDI
         }
 
         /// <summary>
-        /// Method for arranging the child window(s) horizontally.
+        /// Method for the top menu button for arranging the child window(s) horizontally.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -240,7 +266,13 @@ namespace MDI
         {
             this.LayoutMdi(System.Windows.Forms.MdiLayout.TileHorizontal);
         }
-
+        /// <summary>
+        /// Method for enabling and disabling the "save" and "save as" options from the
+        /// top of the main form window.  It will only allow the user to save if there is
+        /// an active child form window on the main form window.  
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             activeChild = this.ActiveMdiChild;
